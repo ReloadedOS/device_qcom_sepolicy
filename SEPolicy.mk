@@ -1,5 +1,7 @@
 # Board specific SELinux policy variable definitions
 ifeq ($(call is-vendor-board-platform,QCOM),true)
+ifneq ($(QSSI_SEPOLICY_INCLUDED),true)
+
 SEPOLICY_PATH:= device/qcom/sepolicy
 LOCAL_PATH := $(call my-dir)
 BOARD_SYSTEM_EXT_PREBUILT_DIR := device/qcom/sepolicy/generic
@@ -25,4 +27,7 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS := \
     $(PRODUCT_PRIVATE_SEPOLICY_DIRS) \
     $(SEPOLICY_PATH)/generic/product/private
 
+QSSI_SEPOLICY_INCLUDED := true
+
+endif
 endif
